@@ -20,12 +20,26 @@ din jocul de șah) astfel încât toate pozițiile tablei să fie acoperite.*/
 using namespace std;
 
 //vectori pentru directiile/pozitiile pe care le poate lua calul pe randuri si coloane
-const int rows[8]={-1,1,2,2,1,-1,-2,-2};
-const int col[8]={2,2,1,-1,-2,-2,-1,1};
+const int x[8]={-1,1,2,2,1,-1,-2,-2};
+const int y[8]={2,2,1,-1,-2,-2,-1,1};
 
 //declaram global matricea de mutari, dimensiunea matricei si numarul mutarii
 int matrice_mutari[50][50],mutari,dimensiune_matrice;
 
+void traversare(int linie, int coloana)
+{
+    int next_linie, next_coloana, gasit=0, nr_miscari;
+    int min = 9;    //ne folosim de un min=9, o valoare cu 1 mai mare decat maximul de miscari valide pe care calul le poate face
+    for(int i = 0 ; i <= 7 ; i++)
+    {
+        if(linie + x[i] >= 1 && linie + x[i] <= dimensiune_matrice && coloana + y[i] >= 1 && coloana + y[i] <= dimensiune_matrice)
+        {
+            //aici va trebui sa calculez recursiv numarul de miscari valide pe care le va putea face calul
+            //dupa ce calculez numarul, compar cu min si pastram mereu numarul minim de miscari, apoi updatez linia curenta si 
+            //coloana curenta si gasit in cazul in care gasim miscarea
+        }
+    }
+}
 
 int main()
 {
