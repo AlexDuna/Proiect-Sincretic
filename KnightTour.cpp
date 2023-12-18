@@ -59,12 +59,12 @@ void traversare(int linie, int coloana)
                 gasit = 1;
             }
         }
+    }
         if(gasit)
         {
             mutari++;
             traversare(next_linie,next_coloana);
         }
-    }
 }
 
 int main()
