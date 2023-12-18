@@ -1,2 +1,3 @@
 # Proiect-Sincretic
-Proiect-Sincretic Repository
+
+Pentru proiectul sincretic am folosit Github, Github desktop, Visual Studio Code, Docker hub si Docker Desktop.

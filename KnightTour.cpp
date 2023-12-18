@@ -69,9 +69,9 @@ void traversare(int linie, int coloana)
 
 int main()
 {
-    cout << "Dimensiune matrice N x N:";
-    cin >> dimensiune_matrice;
-    int poz_rand , poz_coloana;
+    //cout << "Dimensiune matrice N x N:";
+    //cin >> dimensiune_matrice;
+    //int poz_rand , poz_coloana;
     //cout << "Introduceti pozitia de inceput a calului: ";
     //cin >> poz_rand>>poz_coloana;
     matrice_mutari[poz_rand][poz_coloana] = 1;
