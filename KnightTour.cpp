@@ -24,7 +24,7 @@ const int x[8]={-1,1,2,2,1,-1,-2,-2};
 const int y[8]={2,2,1,-1,-2,-2,-1,1};
 
 //declaram global matricea de mutari, dimensiunea matricei si numarul mutarii
-int matrice_mutari[50][50] = {},mutari,dimensiune_matrice;
+int matrice_mutari[50][50] = {},mutari,dimensiune_matrice=8, poz_rand=3,poz_coloana=6;
 
 //functie ca sa calculam nr de mutari valide de la o anumita pozitie data de linie si coloana
 int numar_mutari(int linie, int coloana)
@@ -72,8 +72,8 @@ int main()
     cout << "Dimensiune matrice N x N:";
     cin >> dimensiune_matrice;
     int poz_rand , poz_coloana;
-    cout << "Introduceti pozitia de inceput a calului: ";
-    cin >> poz_rand>>poz_coloana;
+    //cout << "Introduceti pozitia de inceput a calului: ";
+    //cin >> poz_rand>>poz_coloana;
     matrice_mutari[poz_rand][poz_coloana] = 1;
 
     traversare(poz_rand, poz_coloana);
