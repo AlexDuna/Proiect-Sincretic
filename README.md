@@ -1,5 +1,7 @@
 # Proiect-Sincretic
 
+https://hub.docker.com/r/alexduna/proiect-sincretic
+
 Pentru proiectul sincretic am folosit Github, Github desktop, Visual Studio Code, Docker hub si Docker Desktop.
 
 #CODUL#
@@ -50,21 +52,24 @@ CMD ["./KnightTour"]
 Această comandă indică ce proces sau aplicație ar trebui să fie lansată în interiorul containerului atunci când acesta este pornit.
 
 Dupa ce am introdus toate acestea in Dockerfile, am introdus urmatoarele comenzi intr-un terminal (cmd):
-docker build -t alexduna/my-gcc-app .
+docker build -t alexduna/proiect-sincretic:kighttour .
 docker build - Aceasta este comanda principală pentru construirea imaginilor Docker. 
 -t este folosit pentru a specifica numele imaginii
-alexduna/my-gcc-app este numele imaginii.
+alexduna/proiect-sincretic:knighttour este numele imaginii.
 
-docker run -d -p 8080:80 alexduna/my-gcc-app 
-Aceasta comanda este folosită pentru a rula un container Docker bazat pe imaginea alexduna/my-gcc-app
+docker run -d -p 8080:80 alexduna/proiect-sincretic:knighttour
+Aceasta comanda este folosită pentru a rula un container Docker bazat pe imaginea alexduna/proiect-sincretic:knighttour
 -d face ca containerul să ruleze în modul detach, adică în fundal. Acest lucru permite ca terminalul să fie eliberat pentru alte comenzi.
 8080:80 este utilizată pentru a publica porturile containerului către porturile gazdei. Astfel, poți accesa aplicația în container la adresa localhost:8080
 
 docker login
 Comanda docker login este utilizată pentru a autentifica un utilizator într-un registry Docker, permițându-i să încarce (push) și să descarce (pull) imagini către și de la acel registry.
 
-docker push 
+docker push alexduna/proiect-sincretic:knighttour
 Comanda docker push este folosită pentru a încărca o imagine Docker către un registry Docker.
+
+docker pull alexduna/proiect-sincretic:knighttour
+Ca sa descarcam imaginea, dam pull 
 
 
 
