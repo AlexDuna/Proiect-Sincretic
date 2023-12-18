@@ -24,7 +24,7 @@ const int x[8]={-1,1,2,2,1,-1,-2,-2};
 const int y[8]={2,2,1,-1,-2,-2,-1,1};
 
 //declaram global matricea de mutari, dimensiunea matricei si numarul mutarii
-int matrice_mutari[50][50],mutari,dimensiune_matrice;
+int matrice_mutari[50][50] = {},mutari,dimensiune_matrice;
 
 //functie ca sa calculam nr de mutari valide de la o anumita pozitie data de linie si coloana
 int numar_mutari(int linie, int coloana)
@@ -32,7 +32,7 @@ int numar_mutari(int linie, int coloana)
     int nr=0;
     for(int i=0;i<=7;i++)
     {
-        if(linie + x[i] >= 1 && linie + x[i] <= dimensiune_matrice && coloana + y[i] >= 1 && coloana + y[i] <= dimensiune_matrice)
+        if(linie+x[i]>=1 && linie+x[i]<=dimensiune_matrice && coloana+y[i]>=1 && coloana+y[i]<=dimensiune_matrice && matrice_mutari[linie+x[i]][coloana+y[i]]==0)
             nr++;
     }
     return nr;
@@ -41,11 +41,14 @@ int numar_mutari(int linie, int coloana)
 //functie de traversare a tablei de sah folosindu-ne de mutarile valide only
 void traversare(int linie, int coloana)
 {
-    int next_linie, next_coloana, gasit=0, nr;
-    int min = 9;    //ne folosim de un min=9, o valoare cu 1 mai mare decat maximul de miscari valide pe care calul le poate face
+    int next_linie, next_coloana, gasit, nr, min;
+    matrice_mutari[linie][coloana] = mutari + 1;
+    gasit = 0;
+    min = 9;//ne folosim de un min=9, o valoare cu 1 mai mare decat maximul de miscari valide pe care calul le poate face
+ 
     for(int i = 0 ; i <= 7 ; i++)
     {
-        if(linie + x[i] >= 1 && linie + x[i] <= dimensiune_matrice && coloana + y[i] >= 1 && coloana + y[i] <= dimensiune_matrice)
+        if(linie+x[i]>=1 && linie+x[i]<=dimensiune_matrice && coloana+y[i]>=1 && coloana+y[i]<=dimensiune_matrice && matrice_mutari[linie+x[i]][coloana+y[i]] == 0)
         {
             nr = numar_mutari(linie + x[i],coloana + y[i]);
             if(nr < min)
@@ -73,7 +76,7 @@ int main()
     cin >> poz_rand>>poz_coloana;
     matrice_mutari[poz_rand][poz_coloana] = 1;
 
-    //functia recursiva de traversare a miscarilor pe tabla de sah
+    traversare(poz_rand, poz_coloana);
 
     for(int i = 1 ; i <= dimensiune_matrice ; i++)
     {
