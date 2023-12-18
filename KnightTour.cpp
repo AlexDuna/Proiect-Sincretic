@@ -26,17 +26,40 @@ const int y[8]={2,2,1,-1,-2,-2,-1,1};
 //declaram global matricea de mutari, dimensiunea matricei si numarul mutarii
 int matrice_mutari[50][50],mutari,dimensiune_matrice;
 
+//functie ca sa calculam nr de mutari valide de la o anumita pozitie data de linie si coloana
+int numar_mutari(int linie, int coloana)
+{
+    int nr=0;
+    for(int i=0;i<=7;i++)
+    {
+        if(linie + x[i] >= 1 && linie + x[i] <= dimensiune_matrice && coloana + y[i] >= 1 && coloana + y[i] <= dimensiune_matrice)
+            nr++;
+    }
+    return nr;
+}
+
+//functie de traversare a tablei de sah folosindu-ne de mutarile valide only
 void traversare(int linie, int coloana)
 {
-    int next_linie, next_coloana, gasit=0, nr_miscari;
+    int next_linie, next_coloana, gasit=0, nr;
     int min = 9;    //ne folosim de un min=9, o valoare cu 1 mai mare decat maximul de miscari valide pe care calul le poate face
     for(int i = 0 ; i <= 7 ; i++)
     {
         if(linie + x[i] >= 1 && linie + x[i] <= dimensiune_matrice && coloana + y[i] >= 1 && coloana + y[i] <= dimensiune_matrice)
         {
-            //aici va trebui sa calculez recursiv numarul de miscari valide pe care le va putea face calul
-            //dupa ce calculez numarul, compar cu min si pastram mereu numarul minim de miscari, apoi updatez linia curenta si 
-            //coloana curenta si gasit in cazul in care gasim miscarea
+            nr = numar_mutari(linie + x[i],coloana + y[i]);
+            if(nr < min)
+            {
+                min = nr;
+                next_linie = linie + x[i];
+                next_coloana = coloana + y[i];
+                gasit = 1;
+            }
+        }
+        if(gasit)
+        {
+            mutari++;
+            traversare(next_linie,next_coloana);
         }
     }
 }
